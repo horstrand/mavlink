@@ -1,0 +1,218 @@
+<?xml version="1.0"?>
+<mavlink>
+	<include>common.xml</include>
+	<dialect>2</dialect>
+	<!-- Specific messages should use the command id range from 150 to 250, to leave plenty of room for growth of common.xml -->
+	<enums>
+		<!-- System messages -->
+		<enum name="SYSTEM_MESSAGE">
+			<entry value="150" name="SYSTEM_MESSAGE_HANDSHAKE">
+				<param index="1">Sender ID</param>
+				<param index="2">Receiver ID</param>
+			</entry>
+			<entry value="151" name="SYSTEM_MESSAGE_ACK">
+				<param index="1">Sender ID</param>
+				<param index="2">Receiver ID</param>
+				<param index="3">Message ID</param>
+			</entry>
+			<entry value="152" name="SYSTEM_MESSAGE_REBOOT">
+				<param index="1">Sender ID</param>
+				<param index="2">Receiver ID</param>
+			</entry>
+			<entry value="153" name="SYSTEM_MESSAGE_POWEROFF">
+				<param index="1">Sender ID</param>
+				<param index="2">Receiver ID</param>
+			</entry>
+			<entry value="154" name="SYSTEM_MESSAGE_ERROR">
+				<param index="1">Sender ID</param>
+				<param index="2">Receiver ID</param>
+				<param index="3">Error Message</param>
+			</entry>
+		</enum>
+		<!-- Priority actions -->
+		<enum name="PRIORITY_ACTION">
+			<entry value="200" name="PRIORITY_ACTION_RTL">
+				<param index="1">Sender ID</param>
+				<param index="2">Receiver ID</param>
+			</entry>
+			<entry value="201" name="PRIORITY_ACTION_LAND">
+				<param index="1">Sender ID</param>
+				<param index="2">Receiver ID</param>
+			</entry>
+		</enum>
+		<!-- Mission actions -->
+		<enum name="MISSION_MESSAGE">
+			<entry value="210" name="MISSION_MESSAGE_CONFIG">
+				<param index="1">Sender ID</param>
+				<param index="2">Receiver ID</param>
+				<param index="3">Mission ID</param>
+				<param index="4">Altitude</param>
+				<param index="5">Finish action</param>
+				<param index="6">Type</param>
+				<param index="7">Populate</param>
+				<param index="8">Number of waypoints</param>
+			</entry>
+			<entry value="211" name="MISSION_MESSAGE_WAYPOINT">
+				<param index="1">Sender ID</param>
+				<param index="2">Receiver ID</param>
+				<param index="3">Mission ID</param>
+				<param index="3">Index</param>
+				<param index="4">Latitude</param>
+				<param index="5">Longitude</param>
+				<param index="6">Altitude</param>
+				<param index="7">Speed</param>
+				<param index="8">Loiter</param>
+				<param index="9">Action</param>
+			</entry>
+			<entry value="212" name="MISSION_MESSAGE_LOAD">
+				<param index="1">Sender ID</param>
+				<param index="2">Receiver ID</param>
+				<param index="3">Mission ID</param>
+			</entry>
+			<entry value="213" name="MISSION_MESSAGE_START">
+				<param index="1">Sender ID</param>
+				<param index="2">Receiver ID</param>
+			</entry>
+		</enum>
+		<!-- Telemetry actions -->
+		<enum name="TELEMETRY_ACTION">
+			<entry value="220" name="TELEMETRY_ACTION_REQUEST">
+				<param index="1">Sender ID</param>
+				<param index="2">Receiver ID</param>
+			</entry>
+			<entry value="221" name="TELEMETRY_ACTION_RESPOND">
+				<param index="1">Sender ID</param>
+				<param index="2">Receiver ID</param>
+				<param index="3">Battery level</param>
+				<param index="4">Battery voltage</param>
+				<param index="5">Latitude</param>
+				<param index="6">Longitude</param>
+				<param index="7">Altitude</param>
+				<param index="8">Flight mode</param>
+				<param index="9">GPS fix type</param>
+				<param index="10">Number of satellites</param>
+				<param index="11">Attitude euler yaw</param>
+				<param index="12">Attitude euler pitch</param>
+				<param index="13">Attitude euler roll</param>
+				<param index="14">Ground speed north</param>
+				<param index="15">Ground speed east</param>
+				<param index="16">Ground speed down</param>
+			</entry>
+		</enum>
+		<!-- Camera actions -->
+		<enum name="CAMERA_ACTION">
+			<entry value="222" name="CAMERA_ACTION_CAPTURE">
+				<param index="1">Sender ID</param>
+				<param index="2">Receiver ID</param>
+			</entry>
+		</enum>
+	</enums>
+	<messages>
+		<!-- System messages -->
+		<message id="150" name="SYSTEM_MESSAGE_HANDSHAKE">
+			<description>Initialize configuration</description>
+			<field type="uint8_t" name="sender_id">Sender ID</field>
+			<field type="uint8_t" name="receiver_id">Receiver ID</field>
+		</message>
+		<message id="151" name="SYSTEM_MESSAGE_ACK">
+			<description>Acknowledge message</description>
+			<field type="uint8_t" name="sender_id">Sender ID</field>
+			<field type="uint8_t" name="receiver_id">Receiver ID</field>
+			<field type="uint8_t" name="message_id">Message ID</field>
+		</message>
+		<message id="152" name="SYSTEM_MESSAGE_REBOOT">
+			<description>Restarts the onboard computer</description>
+			<field type="uint8_t" name="sender_id">Sender ID</field>
+			<field type="uint8_t" name="receiver_id">Receiver ID</field>
+		</message>
+		<message id="153" name="SYSTEM_MESSAGE_POWEROFF">
+			<description>Power off the onboard computer</description>
+			<field type="uint8_t" name="sender_id">Sender ID</field>
+			<field type="uint8_t" name="receiver_id">Receiver ID</field>
+		</message>
+		<message id="154" name="SYSTEM_MESSAGE_ERROR">
+			<description>Communicate error to the GCS</description>
+			<field type="uint8_t" name="sender_id">Sender ID</field>
+			<field type="uint8_t" name="receiver_id">Receiver ID</field>
+			<field type="char[250]" name="message">Error Message</field>
+		</message>
+		<!-- Priority messages -->
+		<message id="200" name="PRIORITY_ACTION_RTL">
+			<description>Return to take-off location</description>
+			<field type="uint8_t" name="sender_id">Sender ID</field>
+			<field type="uint8_t" name="receiver_id">Receiver ID</field>
+		</message>
+		<message id="201" name="PRIORITY_ACTION_LAND">
+			<description>Land in current location</description>
+			<field type="uint8_t" name="sender_id">Sender ID</field>
+			<field type="uint8_t" name="receiver_id">Receiver ID</field>
+		</message>
+		<!-- Mission messages -->
+		<message id="210" name="MISSION_MESSAGE_CONFIG">
+			<description>Mission general configuration</description>
+			<field type="uint8_t" name="sender_id">Sender ID</field>
+			<field type="uint8_t" name="receiver_id">Receiver ID</field>
+			<field type="uint8_t" name="mission_id">Mission ID</field>
+			<field type="float" name="altitude">Altitude</field>
+			<field type="uint8_t" name="finish_action">Finish action</field>
+			<field type="uint8_t" name="type">Type</field>
+			<field type="uint8_t" name="populate">Type</field>
+			<field type="uint8_t" name="n_waypoints">Number of waypoints</field>
+		</message>
+		<message id="211" name="MISSION_MESSAGE_WAYPOINT">
+			<description>Mission general configuration</description>
+			<field type="uint8_t" name="sender_id">Sender ID</field>
+			<field type="uint8_t" name="receiver_id">Receiver ID</field>
+			<field type="uint8_t" name="mission_id">Mission ID</field>
+			<field type="uint8_t" name="index">Index</field>
+			<field type="float" name="latitude">Latitude</field>
+			<field type="float" name="longitude">Longitude</field>
+			<field type="float" name="altitude">Altitude</field>
+			<field type="float" name="speed">Speed</field>
+			<field type="float" name="loiter">Loiter</field>
+			<field type="float" name="action">Action</field>
+		</message>
+		<message id="212" name="MISSION_MESSAGE_LOAD">
+			<description>Power off the onboard computer</description>
+			<field type="uint8_t" name="sender_id">Sender ID</field>
+			<field type="uint8_t" name="receiver_id">Receiver ID</field>
+			<field type="uint8_t" name="mission_id">Mission ID</field>
+		</message>
+		<message id="213" name="MISSION_MESSAGE_START">
+			<description>Power off the onboard computer</description>
+			<field type="uint8_t" name="sender_id">Sender ID</field>
+			<field type="uint8_t" name="receiver_id">Receiver ID</field>
+		</message>
+		<!-- Telemetry Messages -->
+		<message id="220" name="TELEMETRY_ACTION_REQUEST">
+			<description>Return to take-off location</description>
+			<field type="uint8_t" name="sender_id">Sender ID</field>
+			<field type="uint8_t" name="receiver_id">Receiver ID</field>
+		</message>
+		<message id="221" name="TELEMETRY_ACTION_RESPOND">
+			<description>Land in current location</description>
+			<field type="uint8_t" name="sender_id">Sender ID</field>
+			<field type="uint8_t" name="receiver_id">Receiver ID</field>
+			<field type="float" name="battery_level">Battery level</field>
+			<field type="float" name="battery_voltage">Battery voltage</field>
+			<field type="float" name="latitude">Latitude</field>
+			<field type="float" name="longitude">Longitude</field>
+			<field type="float" name="altitude">Altitude</field>
+			<field type="float" name="flight_mode">Flight mode</field>
+			<field type="float" name="gps_fix_type">GPS fix type</field>
+			<field type="float" name="n_satellites">Number of satellites</field>
+			<field type="float" name="euler_yaw">Attitude euler yaw</field>
+			<field type="float" name="euler_pitch">Attitude euler pitch</field>
+			<field type="float" name="euler_roll">Attitude euler roll</field>
+			<field type="float" name="ground_speed_north">Ground speed north</field>
+			<field type="float" name="ground_speed_east">Ground speed east</field>
+			<field type="float" name="ground_speed_down">Ground speed down</field>
+		</message>
+		<!-- Telemetry Messages -->
+		<message id="222" name="CAMERA_ACTION_CAPTURE">
+			<description>Capture a frame with the current installed camera</description>
+			<field type="uint8_t" name="sender_id">Sender ID</field>
+			<field type="uint8_t" name="receiver_id">Receiver ID</field>
+		</message>
+	</messages>
+</mavlink>
