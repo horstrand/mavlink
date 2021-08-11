@@ -262,7 +262,7 @@
 			<field type="float" name="distance_east">Distance East</field>
 			<field type="float" name="speed">Speed</field>
 		</message>
-		<message id="23" name="DRONE_ACTION_MOVE_YAW">
+		<message id="233" name="DRONE_ACTION_MOVE_YAW">
 			<description>Rotate drone to a specified angle</description>
 			<field type="uint8_t" name="sender_id">Sender ID</field>
 			<field type="uint8_t" name="receiver_id">Receiver ID</field>
