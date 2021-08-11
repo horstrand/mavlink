@@ -108,24 +108,24 @@
 		</enum>
 		<!-- Drone actions -->
 		<enum name="DRONE_ACTION">
-			<entry value="230" name="DRONE_ACTION_TAKEOFF">
+			<entry value="302" name="DRONE_ACTION_TAKEOFF">
 				<param index="1">Sender ID</param>
 				<param index="2">Receiver ID</param>
 			</entry>
-			<entry value="231" name="DRONE_ACTION_MOVE_VERTICAL">
+			<entry value="303" name="DRONE_ACTION_MOVE_VERTICAL">
 				<param index="1">Sender ID</param>
 				<param index="2">Receiver ID</param>
 				<param index="3">Height</param>
 				<param index="4">Speed</param>
 			</entry>
-			<entry value="232" name="DRONE_ACTION_MOVE_HORIZONTAL">
+			<entry value="304" name="DRONE_ACTION_MOVE_HORIZONTAL">
 				<param index="1">Sender ID</param>
 				<param index="2">Receiver ID</param>
 				<param index="3">Distance North</param>
 				<param index="4">Distance East</param>
 				<param index="5">Speed</param>
 			</entry>
-			<entry value="233" name="DRONE_ACTION_MOVE_YAW">
+			<entry value="305" name="DRONE_ACTION_MOVE_YAW">
 				<param index="1">Sender ID</param>
 				<param index="2">Receiver ID</param>
 				<param index="3">Yaw</param>
@@ -242,19 +242,19 @@
 		</message>
 
 		<!-- Drone action messages -->
-		<message id="230" name="DRONE_ACTION_TAKEOFF">
+		<message id="302" name="DRONE_ACTION_TAKEOFF">
 			<description>Issue a drone takeoff</description>
 			<field type="uint8_t" name="sender_id">Sender ID</field>
 			<field type="uint8_t" name="receiver_id">Receiver ID</field>
 		</message>
-		<message id="231" name="DRONE_ACTION_MOVE_VERTICAL">
+		<message id="303" name="DRONE_ACTION_MOVE_VERTICAL">
 			<description>Moves drone to a specified height above ground</description>
 			<field type="uint8_t" name="sender_id">Sender ID</field>
 			<field type="uint8_t" name="receiver_id">Receiver ID</field>
 			<field type="float" name="height">Height</field>
 			<field type="float" name="speed">Speed</field>
 		</message>
-		<message id="232" name="DRONE_ACTION_MOVE_HORIZONTAL">
+		<message id="304" name="DRONE_ACTION_MOVE_HORIZONTAL">
 			<description>Moves drone to a specified location</description>
 			<field type="uint8_t" name="sender_id">Sender ID</field>
 			<field type="uint8_t" name="receiver_id">Receiver ID</field>
@@ -262,7 +262,7 @@
 			<field type="float" name="distance_east">Distance East</field>
 			<field type="float" name="speed">Speed</field>
 		</message>
-		<message id="233" name="DRONE_ACTION_MOVE_YAW">
+		<message id="305" name="DRONE_ACTION_MOVE_YAW">
 			<description>Rotate drone to a specified angle</description>
 			<field type="uint8_t" name="sender_id">Sender ID</field>
 			<field type="uint8_t" name="receiver_id">Receiver ID</field>
