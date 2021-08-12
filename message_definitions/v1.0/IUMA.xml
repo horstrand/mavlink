@@ -27,6 +27,7 @@
 				<param index="1">Sender ID</param>
 				<param index="2">Receiver ID</param>
 				<param index="3">Error Message</param>
+				<param index="4">Error ID</param>
 			</entry>
 		</enum>
 		<!-- Priority actions -->
@@ -161,6 +162,7 @@
 			<field type="uint8_t" name="sender_id">Sender ID</field>
 			<field type="uint8_t" name="receiver_id">Receiver ID</field>
 			<field type="char[250]" name="message">Error Message</field>
+			<field type="uint8_t" name="error_id">Error ID</field>
 		</message>
 		<!-- Priority messages -->
 		<message id="200" name="PRIORITY_ACTION_RTL">
