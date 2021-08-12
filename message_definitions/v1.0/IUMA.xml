@@ -144,7 +144,7 @@
 			<description>Acknowledge message</description>
 			<field type="uint8_t" name="sender_id">Sender ID</field>
 			<field type="uint8_t" name="receiver_id">Receiver ID</field>
-			<field type="uint8_t" name="message_id">Message ID</field>
+			<field type="uint16_t" name="message_id">Message ID</field>
 		</message>
 		<message id="152" name="SYSTEM_MESSAGE_REBOOT">
 			<description>Restarts the onboard computer</description>
