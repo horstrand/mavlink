@@ -2,7 +2,7 @@
 <mavlink>
 	<include>common.xml</include>
 	<dialect>2</dialect>
-	<!-- IUMA dialect -->
+	<!-- IUMA dialect 2-->
 	<!-- Specific messages should use the command id range from 150 to 250, to leave plenty of room for growth of common.xml -->
 	<enums>
 		<!-- System messages -->
